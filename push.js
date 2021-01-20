@@ -8,8 +8,14 @@ let VAPIDKeys = {
 
 push.setVapidDetails('mailto:easwar4@gmail.com', VAPIDKeys.publicKey, VAPIDKeys.privateKey)
 
-let sub = {
+// vigorous-ramanujan-8f6916.netlify.app
 
+let sub = {
+  "endpoint": "https://updates.push.services.mozilla.com/wpush/v2gAAAAABgB…hRdiyS-iQRjUQzztjdEmxeedXIc67X8jzZN7MSRrwdb3UZmvgeMOu9fFKBPg",
+  "keys": {
+    "auth": "tCv2Xwa-A6HMoBzsjeQ1JQ",
+    "p256dh": "BOoxN3ipUUcWyacS1g2KrHrV3tij6N6u1DRdbJdKwevHqc4cunKMy3IsFVcz0AqsvhETHpI5NvXwxmp7GSgzrSE"
+  }
 }
 
 push.sendNotification(sub, 'test msg')
