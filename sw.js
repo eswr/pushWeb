@@ -1,26 +1,14 @@
-// 'use strict';
-
-let port;
-let pushMessage;
-
+// 'use strict'
 self.addEventListener('push', function (event) {
-  pushMessage = event.data ? event.data.text() : 'no payload';
+  console.log('[Service Worker] Push Received.')
+  console.log(`[Service Worker] Push had this data: "${event.data.text()}"`)
 
-  if (port) {
-    port.postMessage(pushMessage);
+  const title = 'Push Notications test'
+  const options = {
+    body: 'Yay it works.',
+    icon: 'images/icon.png',
+    badge: 'images/badge.png'
   }
 
-  event.waitUntil(self.registration.showNotification('Web Push Demo', {
-    body: 'Notification!',
-    tag: 'push'
-  }));
-});
-
-self.onmessage = function (e) {
-  port = e.ports[0];
-
-  if (pushMessage) {
-    // Push message arrived before the page finished loading.
-    port.postMessage(pushMessage);
-  }
-};
+  event.waitUntil(self.registration.showNotification(title, options))
+})
